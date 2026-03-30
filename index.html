@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Style Guide</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f6f3;
+      color: #111;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #ecece7;
+    }
+
+    .topbar-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: #7a7a74;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .site-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .search-input {
+      width: 320px;
+      max-width: 100%;
+      background: #f3f3ef;
+      border: 1px solid #e7e7e2;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #222;
+      outline: none;
+    }
+
+    .layout {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .sidebar {
+      background: #fff;
+      border: 1px solid #ecece7;
+      border-radius: 24px;
+      padding: 16px;
+      position: sticky;
+      top: 92px;
+      max-height: calc(100vh - 120px);
+      overflow: auto;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #7a7a74;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .group {
+      margin-bottom: 16px;
+    }
+
+    .group-btn {
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: #6c6c66;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+    }
+
+    .group-btn.active {
+      background: #111;
+      color: #fff;
+    }
+
+    .items {
+      display: grid;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .item-btn {
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: #66665f;
+      text-align: left;
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .item-btn.active {
+      background: #f1f1ed;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .main {
+      display: grid;
+      gap: 22px;
+    }
+
+    .hero {
+      background: #fff;
+      border: 1px solid #ecece7;
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #7a7a74;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 10px 0 0;
+      font-size: 42px;
+      line-height: 0.98;
+      letter-spacing: -1.2px;
+    }
+
+    .hero-notes {
+      margin-top: 12px;
+      color: #66665f;
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 900px;
+    }
+
+    .meta {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .meta-card {
+      background: #f4f4f0;
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #898982;
+      font-weight: 700;
+    }
+
+    .meta-value {
+      margin-top: 8px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ecece7;
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .code {
+      font-size: 12px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: #66665f;
+      font-weight: 700;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: #9a9a93;
+      font-weight: 700;
+    }
+
+    .img-wrap {
+      background: #f3f3ef;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .desc {
+      margin-top: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #66665f;
+    }
+
+    .empty {
+      background: #fff;
+      border: 1px dashed #ddddd6;
+      border-radius: 24px;
+      padding: 32px;
+      color: #777;
+    }
+
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: relative;
+        top: 0;
+        max-height: none;
+      }
+      .grid, .meta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid, .meta { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    const data = {
+      Bags: {
+        "Tote/Holdall": {
+          notes: "White background · centered product · no hard shadow · consistent handles position",
+          shots: {
+            IN: {
+              img: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=80",
+              desc: "Front — full bag visible and centered"
+            },
+            BK: {
+              img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=80",
+              desc: "Back — same scale as front"
+            },
+            CU: {
+              img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80",
+              desc: "Detail — hardware / texture"
+            },
+            E1: {
+              img: "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=900&q=80",
+              desc: "Base / bottom — centered and clean"
+            }
+          }
+        },
+        "Loewe Puzzle Bag": {
+          notes: "White background · structured silhouette · keep proportions consistent",
+          shots: {
+            IN: { img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80", desc: "Front — straight and centered" },
+            BK: { img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=80", desc: "Back — aligned with front" },
+            CU: { img: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=80", desc: "Detail — panels / stitching" },
+            E1: { img: "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=900&q=80", desc: "Base — clean edges" }
+          }
+        },
+        "Sling Bag": {
+          notes: "Centered product · strap tidy · no twists",
+          shots: {
+            IN: { img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=80", desc: "Front view" },
+            BK: { img: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=80", desc: "Back view" },
+            CU: { img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80", desc: "Detail — zip / strap" },
+            E1: { img: "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=900&q=80", desc: "Base / side reference" }
+          }
+        },
+        "Garment Bag": { notes: "White background · full length visible", shots: {} },
+        "Overhead Bags": { notes: "Centered product · maintain shape", shots: {} },
+        "Messenger/Briefcase": { notes: "Structured silhouette · no shadow", shots: {} },
+        "Weekend Bags": { notes: "Full bag visible · keep handles balanced", shots: {} },
+        "Backpacks": { notes: "Centered product · straps balanced", shots: {} },
+        "Washbags": { notes: "Simple centered packshot", shots: {} },
+        "Belt Bag": { notes: "Keep strap positioned cleanly", shots: {} }
+      },
+
+      Wallets: {
+        "Billfold": { notes: "Centered product · white background", shots: {} },
+        "Cardholder": {
+          notes: "Centered product · clean silhouette · no clipping",
+          shots: {
+            IN: { img: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=80", desc: "Front — centered" },
+            BK: { img: "https://images.unsplash.com/photo-1517254797898-04edd251b4d7?auto=format&fit=crop&w=900&q=80", desc: "Back — same scale" },
+            CU: { img: "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?auto=format&fit=crop&w=900&q=80", desc: "Detail — leather / slots" },
+            E1: { img: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=900&q=80", desc: "Interior / edge reference" }
+          }
+        },
+        "Keychains": { notes: "Centered product · hardware visible", shots: {} },
+        "Money Clip": { notes: "White background · clean centered shot", shots: {} },
+        "Wallet Chains": { notes: "Organized chain layout · avoid tangles", shots: {} },
+        "Passport Holder": { notes: "Centered product · cover aligned", shots: {} }
+      },
+
+      Shoes: {
+        "Sneakers": {
+          notes: "White background · centered product · no shadow · consistent scale",
+          shots: {
+            IN: {
+              img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
+              desc: "Front — straight, centered, no angle"
+            },
+            BK: {
+              img: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=900&q=80",
+              desc: "Back — aligned with front"
+            },
+            CU: {
+              img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80",
+              desc: "Detail — logo / texture"
+            },
+            E1: {
+              img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=900&q=80",
+              desc: "Sole — flat and centered"
+            }
+          }
+        },
+        "Loafers/Derbys/Brogues": {
+          notes: "White background · clean profile · premium alignment",
+          shots: {
+            IN: { img: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=900&q=80", desc: "Front — straight and centered" },
+            BK: { img: "https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=900&q=80", desc: "Back — balanced and aligned" },
+            CU: { img: "https://images.unsplash.com/photo-1614252235318-cd3b1f2cf77b?auto=format&fit=crop&w=900&q=80", desc: "Detail — leather / finish" },
+            E1: { img: "https://images.unsplash.com/photo-1614252369439-5f104f9c58e0?auto=format&fit=crop&w=900&q=80", desc: "Sole — clean and centered" }
+          }
+        },
+        "Boat Shoes": { notes: "Centered product · laces tidy", shots: {} },
+        "Boots": { notes: "Full height visible · vertical alignment", shots: {} },
+        "Sandals/Slides": { notes: "Centered pair or single shoe as standard", shots: {} },
+        "Charvet Slippers": { notes: "Clean profile · centered", shots: {} },
+        "Espadrilles": { notes: "Texture detail important", shots: {} }
+      },
+
+      Hats: {
+        "Caps/Beanies": {
+          notes: "Centered product · clean silhouette · no clipping",
+          shots: {
+            IN: { img: "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=900&q=80", desc: "Front — straight view" },
+            BK: { img: "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?auto=format&fit=crop&w=900&q=80", desc: "Back — aligned" },
+            CU: { img: "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=900&q=80", desc: "Detail — logo / fabrication" },
+            E1: { img: "https://images.unsplash.com/photo-1582791694770-cbdc9dda338f?auto=format&fit=crop&w=900&q=80", desc: "Extra angle — internal reference" }
+          }
+        },
+        "Bucket Hat": { notes: "Crown shape visible · centered", shots: {} },
+        "Flat Caps": { notes: "Show profile and crown clearly", shots: {} },
+        "Balaclava": { notes: "Silhouette must remain clean", shots: {} },
+        "Panama Hat": { notes: "Brim shape consistent", shots: {} }
+      },
+
+      Jewellery: {
+        "Bracelets/Cuffs": { notes: "Centered product · metallic highlights controlled", shots: {} },
+        "Cufflinks": { notes: "Pair arrangement consistent", shots: {} },
+        "Earrings": { notes: "Symmetry and spacing important", shots: {} },
+        "Necklaces": { notes: "Chain laid cleanly", shots: {} },
+        "Rings": { notes: "Centered ring shot · reflection controlled", shots: {} },
+        "Tie Clips": { notes: "Straight alignment", shots: {} }
+      },
+
+      Belts: {
+        "Formal Belts": { notes: "Buckle centered in detail shots", shots: {} },
+        "Casual Belts": { notes: "Leather texture detail important", shots: {} }
+      },
+
+      Sunglasses: {
+        "Sunglasses": { notes: "Centered frame · temples aligned", shots: {} },
+        "Optical": { notes: "Straight front essential", shots: {} }
+      },
+
+      Rec: {
+        "Small Leather Goods": { notes: "Centered product · white background", shots: {} }
+      },
+
+      Socks: {
+        "Socks": { notes: "Fold consistent · branding visible if required", shots: {} }
+      },
+
+      Gloves: {
+        "Gloves": { notes: "Pair aligned · fingers tidy", shots: {} }
+      },
+
+      Scarves: {
+        "Scarves": { notes: "Fold or drape must follow standard", shots: {} }
+      },
+
+      Sport: {
+        "Sport Accessories": { notes: "White background · centered reference", shots: {} },
+        "Sport Bags": { notes: "Straps and handles controlled", shots: {} }
+      },
+
+      "Tech/Audio": {
+        "Headphones": { notes: "Centered product · symmetry important", shots: {} },
+        "Speakers": { notes: "Straight front view", shots: {} },
+        "Tech Accessories": { notes: "White background · detail key ports/features", shots: {} }
+      },
+
+      Lifestyle: {
+        "Home Objects": { notes: "Centered product · clean silhouette", shots: {} },
+        "Travel Accessories": { notes: "Consistent scale and spacing", shots: {} }
+      }
+    };
+
+    let activeGroup = "Shoes";
+    let activeItem = "Sneakers";
+    let search = "";
+
+    function escapeHTML(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function escapeSingle(str) {
+      return String(str).replace(/'/g, "\\'");
+    }
+
+    function getFilteredData(query) {
+      const q = query.trim().toLowerCase();
+      if (!q) return data;
+
+      const filtered = {};
+      Object.entries(data).forEach(([groupName, items]) => {
+        const matchedItems = {};
+        Object.entries(items).forEach(([itemName, itemData]) => {
+          const haystack = `${groupName} ${itemName} ${itemData.notes}`.toLowerCase();
+          if (haystack.includes(q)) matchedItems[itemName] = itemData;
+        });
+        if (Object.keys(matchedItems).length) filtered[groupName] = matchedItems;
+      });
+      return filtered;
+    }
+
+    function ensureActiveExists(filteredData) {
+      if (filteredData[activeGroup] && filteredData[activeGroup][activeItem]) return;
+      const firstGroup = Object.keys(filteredData)[0];
+      if (!firstGroup) return;
+      activeGroup = firstGroup;
+      activeItem = Object.keys(filteredData[firstGroup])[0];
+    }
+
+    function renderLayout() {
+      const app = document.getElementById("app");
+      app.innerHTML = `
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div>
+              <div class="eyebrow">NET-A-PORTER</div>
+              <div class="site-title">Photo Style Guide</div>
+            </div>
+            <input
+              id="searchInput"
+              class="search-input"
+              type="text"
+              placeholder="Search category or subcategory..."
+            />
+          </div>
+        </div>
+
+        <div class="layout">
+          <aside class="sidebar">
+            <div class="sidebar-title">Categories</div>
+            <div id="sidebarContent"></div>
+          </aside>
+
+          <main class="main">
+            <section class="hero" id="heroContent"></section>
+            <section id="gridContent"></section>
+          </main>
+        </div>
+      `;
+
+      const input = document.getElementById("searchInput");
+      input.value = search;
+      input.addEventListener("input", (e) => {
+        search = e.target.value;
+        updateView();
+      });
+    }
+
+    function updateView() {
+      const filteredData = getFilteredData(search);
+      ensureActiveExists(filteredData);
+
+      const sidebar = document.getElementById("sidebarContent");
+      const hero = document.getElementById("heroContent");
+      const grid = document.getElementById("gridContent");
+
+      if (!sidebar || !hero || !grid) return;
+
+      if (Object.keys(filteredData).length === 0) {
+        sidebar.innerHTML = `<div class="empty" style="padding:16px;">No matching categories.</div>`;
+        hero.innerHTML = `
+          <div class="hero-label">Official Internal Guideline</div>
+          <h1>No results</h1>
+          <div class="hero-notes">Try another search term.</div>
+        `;
+        grid.innerHTML = "";
+        return;
+      }
+
+      sidebar.innerHTML = Object.entries(filteredData)
+        .map(([groupName, groupItems]) => `
+          <div class="group">
+            <button class="group-btn ${activeGroup === groupName ? "active" : ""}" onclick="setGroup('${escapeSingle(groupName)}')">
+              ${escapeHTML(groupName)}
+            </button>
+            <div class="items">
+              ${Object.keys(groupItems).map(itemName => `
+                <button
+                  class="item-btn ${activeGroup === groupName && activeItem === itemName ? "active" : ""}"
+                  onclick="setItem('${escapeSingle(groupName)}','${escapeSingle(itemName)}')"
+                >
+                  ${escapeHTML(itemName)}
+                </button>
+              `).join("")}
+            </div>
+          </div>
+        `).join("");
+
+      const current = filteredData[activeGroup]?.[activeItem];
+
+      if (!current) {
+        hero.innerHTML = `
+          <div class="hero-label">Official Internal Guideline</div>
+          <h1>No results</h1>
+          <div class="hero-notes">Try another search term.</div>
+        `;
+        grid.innerHTML = "";
+        return;
+      }
+
+      hero.innerHTML = `
+        <div class="hero-label">Official Internal Guideline</div>
+        <h1>${escapeHTML(activeItem)}</h1>
+        <div class="hero-notes">${escapeHTML(current.notes)}</div>
+
+        <div class="meta">
+          <div class="meta-card">
+            <div class="meta-label">Group</div>
+            <div class="meta-value">${escapeHTML(activeGroup)}</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">View</div>
+            <div class="meta-value">${escapeHTML(activeItem)}</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Shots</div>
+            <div class="meta-value">${Object.keys(current.shots || {}).length}</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Search</div>
+            <div class="meta-value">${escapeHTML(search.trim() || "All")}</div>
+          </div>
+        </div>
+      `;
+
+      if (!current.shots || Object.keys(current.shots).length === 0) {
+        grid.innerHTML = `<div class="empty">No reference images added yet for this guideline.</div>`;
+        return;
+      }
+
+      grid.innerHTML = `
+        <div class="grid">
+          ${Object.entries(current.shots).map(([code, shot]) => `
+            <div class="card">
+              <div class="card-top">
+                <div class="code">${escapeHTML(code)}</div>
+                <div class="tag">Reference</div>
+              </div>
+              <div class="img-wrap">
+                <img src="${escapeHTML(shot.img)}" alt="${escapeHTML(code)}">
+              </div>
+              <div class="desc">${escapeHTML(shot.desc)}</div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function setGroup(groupName) {
+      activeGroup = groupName;
+      activeItem = Object.keys(data[groupName])[0];
+      updateView();
+    }
+
+    function setItem(groupName, itemName) {
+      activeGroup = groupName;
+      activeItem = itemName;
+      updateView();
+    }
+
+    renderLayout();
+    updateView();
+  </script>
+</body>
+</html>
